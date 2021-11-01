@@ -1,0 +1,48 @@
+﻿@model Assessment5a.Models.Calculator
+
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<h1>Calculator</h1>
+
+<h4>Calculator</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Result">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="num1" class="control-label"></label>
+                <input asp-for="num1" class="form-control" />
+                <span asp-validation-for="num1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="num2" class="control-label"></label>
+                <input asp-for="num2" class="form-control" />
+                <span asp-validation-for="num2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="operation" class="control-label"></label><br />
+                @*<input asp-for="operation" class="form-control" />*@
+                <input type="radio" value="Plus" id="operation" name="operation" required/> Plus<br />
+                <input type="radio" value="Minus" id="operation" name="operation" /> Minus<br />
+                <input type="radio" value="Multiply" id="operation" name="operation" /> Multiply<br />
+                <input type="radio" value="Divide" id="operation" name="operation" /> Divide<br />
+
+                <span asp-validation-for="operation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
